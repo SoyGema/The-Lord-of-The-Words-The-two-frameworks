@@ -1,7 +1,15 @@
 The Lord of The Words : The Two Frameworks
 ==============================
 
-{{cookiecutter.description}}
+What is Neural Machine Translation?
+------------
+
+Neural Machine Translation’s main goal is to transform a sequence from one language into another sequence to another one. It is an approach to machine translation inside NLP that uses Artificial Neural Networks to predict the likelihood of a sequence of words, often trained in an end-to-end fashion and can generalize well to very long word sequences. Formally it can be defined as a NN that models the conditional probability $ p(y|x)$ of translating a sentence $x1...xn$ into $y1...yn$.
+
+Why Transformers for Neural Machine Translation?
+------------
+
+Transformer has been widely adopted in Neural Machine Translation (NMT) because of its large capacity and parallel training of sequence generation. However, the deployment of Transformers is challenging because different scenarios require models of different complexities and scales.
 
 Project Organization
 ------------
@@ -55,7 +63,8 @@ Project Organization
 
 Check Python GPU availability in Mac
 
-´´´
+```
+
 print(f"Python Platform: {platform.platform()}")
 
 print(f"Tensor Flow Version: {tf.__version__}")
@@ -65,7 +74,8 @@ print(f"Python {sys.version}")
 gpu = len(tf.config.list_physical_devices('GPU'))>0
 
 print("GPU is", "available" if gpu else "NOT AVAILABLE")
-´´´
+
+```
 
 
 
