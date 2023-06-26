@@ -1,0 +1,1 @@
+python train_model.py --model_name_or_path /Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/src/models/t5-small --output_dir '/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/notebooks/model_translation_en_pt_poc3' --dataset_name "opus_books" --dataset_config_name 'es-it'
