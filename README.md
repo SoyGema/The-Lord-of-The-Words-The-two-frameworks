@@ -77,7 +77,7 @@ print("GPU is", "available" if gpu else "NOT AVAILABLE")
 
 ```
 
-
+Working under Python 3.9 
 
 --------
 
