@@ -32,6 +32,9 @@ import tensorflow as tf
 from datasets import load_dataset
 
 import transformers
+
+### Load autoclasses from HugginFace
+
 from transformers import (
     AutoConfig,
     AutoTokenizer,
@@ -71,7 +74,7 @@ class ModelArguments:
     """
     Arguments pertaining to which model/config/tokenizer we are going to fine-tune from.
     """
-
+    ### model_name_or_path -> The repo has to be downloaded from hub
     model_name_or_path: str = field(
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
         ## For translation Im using https://huggingface.co/t5-small
@@ -79,6 +82,7 @@ class ModelArguments:
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
     )
+    ### Tokenizer takes part of feature engineering, I think done once it can be reloaded
     tokenizer_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
     )
@@ -94,6 +98,7 @@ class ModelArguments:
         default="main",
         metadata={"help": "The specific model version to use (can be a branch name, tag name or commit id)."},
     )
+    ## See login
     use_auth_token: bool = field(
         default=False,
         metadata={
@@ -110,7 +115,7 @@ class DataTrainingArguments:
     """
     Arguments pertaining to what data we are going to input our model for training and eval.
     """
-
+    ### source_lang and target_lang should use the sylabe ( eg en )
     source_lang: str = field(default=None, metadata={"help": "Source language id for translation."})
     target_lang: str = field(default=None, metadata={"help": "Target language id for translation."})
     dataset_name: Optional[str] = field(
@@ -122,6 +127,8 @@ class DataTrainingArguments:
     train_file: Optional[str] = field(
         default=None, metadata={"help": "The input training data file (a jsonlines or csv file)."}
     )
+    
+    ### It seems we need this for the evaluation dataset
     validation_file: Optional[str] = field(
         default=None,
         metadata={
@@ -153,7 +160,7 @@ class DataTrainingArguments:
         },
     )
     max_target_length: Optional[int] = field(
-        default=128,
+        default=64,
         metadata={
             "help": (
                 "The maximum total sequence length for target text after tokenization. Sequences longer "
@@ -258,9 +265,11 @@ class DataTrainingArguments:
 def main():
     # region Argument parsing
     # See all possible arguments in src/transformers/training_args.py
-    # or by passing the --help flag to this script.
+    # or by passing the --help flag to this script. DEBERIAMOS PASAR MAS FLAGS ????
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
+
+    ### Se pueden añadir mas argumentos aqui para ver el tema ?
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TFTrainingArguments))
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
@@ -458,6 +467,7 @@ def main():
             )
     else:
         eval_dataset = None
+        print('no eval dataset')
     # endregion
 
     with training_args.strategy.scope():
@@ -668,14 +678,18 @@ def main():
 
         # region Validation
         if training_args.do_eval and not training_args.do_train:
-            # Compiling generation with XLA yields enormous speedups, see https://huggingface.co/blog/tf-xla-generate
+            # Compiling generation with XLA yields enormous speedups, see
+            # https://huggingface.co/blog/tf-xla-generate
+            
+
+            ## This is weird , the article talks about generation and this is translations
             @tf.function(jit_compile=True)
             def generate(**kwargs):
                 return model.generate(**kwargs)
 
             if training_args.do_eval:
                 logger.info("Evaluation...")
-                for batch, labels in tf_eval_dataset:
+                for batch, labels in tf_train_dataset: ## changed for see if this computes . Originally tf_eval_dataset
                     batch.update(gen_kwargs)
                     generated_tokens = generate(**batch)
                     if isinstance(generated_tokens, tuple):
