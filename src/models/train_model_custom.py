@@ -24,7 +24,6 @@ import os
 import sys
 from dataclasses import dataclass, field
 from typing import Optional
-import mlflow
 
 import datasets
 import evaluate
@@ -78,7 +77,6 @@ class ModelArguments:
     ### model_name_or_path -> The repo has to be downloaded from hub
     model_name_or_path: str = field(
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-        ## For translation Im using https://huggingface.co/t5-small
     )
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
@@ -547,7 +545,7 @@ def main():
         tf_eval_dataset = model.prepare_tf_dataset(
             eval_dataset, collate_fn=data_collator, batch_size=total_eval_batch_size, shuffle=False
         ).with_options(dataset_options)
-        # endregion
+        #endregion
 
         # region Optimizer and LR scheduling
         num_train_steps = int(len(tf_train_dataset) * training_args.num_train_epochs)
@@ -653,13 +651,6 @@ def main():
             )
         # endregion
 
-        # region mlflow
-            os.environ["MLFLOW_EXPERIMENT_NAME"] = "trainer-mlflow-demo"
-            os.environ["MLFLOW_FLATTEN_PARAMS"] = "1"
-
-        # endregion
-
-
         # region Training
         eval_metrics = None
         # Transformers models compute the right loss for their task by default when labels are passed, and will
@@ -682,10 +673,7 @@ def main():
 
             history = model.fit(tf_train_dataset, epochs=int(training_args.num_train_epochs), callbacks=callbacks)
             eval_metrics = {key: val[-1] for key, val in history.history.items()}
-            mlfow.end_run()
         # endregion
-
-
 
         # region Validation
         if training_args.do_eval and not training_args.do_train:

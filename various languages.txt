@@ -1,0 +1,10 @@
+['ca-de', 'ca-en', 'de-en', 'el-en', 'de-eo', 'en-eo',
+'de-es', 'el-es', 'en-es', 'eo-es', 'en-fi', 'es-fi',
+'de-fr', 'el-fr', 'en-fr', 'eo-fr', 'es-fr', 'fi-fr',
+'ca-hu', 'de-hu', 'el-hu', 'en-hu', 'eo-hu', 'fr-hu',
+'de-it', 'en-it', 'eo-it', 'es-it', 'fr-it', 'hu-it',
+'ca-nl', 'de-nl', 'en-nl', 'es-nl', 'fr-nl', 'hu-nl', 
+'it-nl', 'en-no', 'es-no', 'fi-no', 'fr-no', 'hu-no', 
+'en-pl', 'fi-pl', 'fr-pl', 'hu-pl', 'de-pt', 'en-pt', 
+'eo-pt', 'es-pt', 'fr-pt', 'hu-pt', 'it-pt', 'de-ru',
+'en-ru', 'es-ru', 'fr-ru', 'hu-ru', 'it-ru', 'en-sv', 'fr-sv', 'it-sv']
