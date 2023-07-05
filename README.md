@@ -1,7 +1,7 @@
 The Lord of The Words : The Two Frameworks
 ==============================
 
-[![GitHub license](https://img.shields.io/github/license/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema/The-Lord-of-The-Words-The-two-frameworks/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/issues)
 [![GitHub stars](https://img.shields.io/github/stars/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/network)
@@ -83,9 +83,7 @@ gpu = len(tf.config.list_physical_devices('GPU'))>0
 
 print("GPU is", "available" if gpu else "NOT AVAILABLE")
 
-```
 
-<<<<<<< HEAD
 Working under Python 3.9 
 =======
 ### Run script train_model.py
@@ -97,7 +95,6 @@ Working under Python 3.9
 ```
 python train_model.py --model_name_or_path '/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/src/models/t5-small'  --output_dir '../The-Lord-of-The-Words-The-two-frameworks/my_awesome_opus_books_model_2' --dataset_name '../The-Lord-of-The-Words-The-two-frameworks/src/data/opus_books' --dataset_config_name en-pt --do_train --source_lang en --target_lang pt --num_train_epochs 1
 ```
->>>>>>> 83caf13 (last version)
 
 --------
 
