@@ -9,6 +9,22 @@ The Lord of The Words : The Two Frameworks
 
 ![image description](graphic_material/cover.png)
 
+Working under Python 3.9
+
+Reproduce training
+------------
+
+* Download the dataset repos and the model repo 
+* Download dataset [opus100](https://huggingface.co/datasets/wmt16) with git
+* Download model [t5-small](https://huggingface.co/t5-small) with git
+* pass it as flags
+
+```
+python train_model.py --model_name_or_path '/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/src/models/t5-small'  --output_dir '../The-Lord-of-The-Words-The-two-frameworks/my_awesome_opus_books_model_2' --dataset_name '../The-Lord-of-The-Words-The-two-frameworks/src/data/opus_books' --dataset_config_name en-pt --do_train --source_lang en --target_lang pt --num_train_epochs 1
+```
+
+
+
 What is Neural Machine Translation?
 ------------
 
@@ -82,19 +98,9 @@ print(f"Python {sys.version}")
 gpu = len(tf.config.list_physical_devices('GPU'))>0
 
 print("GPU is", "available" if gpu else "NOT AVAILABLE")
-
-
-Working under Python 3.9 
-=======
-### Run script train_model.py
-
-* Download the dataset repos and the model repo 
-* Download dataset [wmt16](https://huggingface.co/datasets/wmt16) with git
-* pass it as flags
-
 ```
-python train_model.py --model_name_or_path '/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/src/models/t5-small'  --output_dir '../The-Lord-of-The-Words-The-two-frameworks/my_awesome_opus_books_model_2' --dataset_name '../The-Lord-of-The-Words-The-two-frameworks/src/data/opus_books' --dataset_config_name en-pt --do_train --source_lang en --target_lang pt --num_train_epochs 1
-```
+
+
 
 --------
 
