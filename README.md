@@ -20,14 +20,19 @@ Reproduce training
 * pass it as flags
 
 ```
-python train_model.py --model_name_or_path '/../The-Lord-of-The-Words-The-two-frameworks/src/models/t5-small' 
- --output_dir '../The-Lord-of-The-Words-The-two-frameworks/my_awesome_opus_books_model_2'
- --dataset_name '../The-Lord-of-The-Words-The-two-frameworks/src/data/opus_books' 
- --dataset_config_name en-pt 
- --do_train 
- --source_lang en 
- --target_lang pt 
- --num_train_epochs 1
+python train_model.py \
+    --model_name_or_path t5-small \
+    --do_train \
+    --do_eval \
+    --source_lang en \
+    --target_lang ro \
+    --source_prefix "translate English to Romanian: " \
+    --dataset_name opus100 \
+    --dataset_config_name en-ro \
+    --output_dir /tmp/tst-translation \
+    --per_device_train_batch_size=16 \
+    --per_device_eval_batch_size=16 \
+    --overwrite_output_dir
 ```
 
 
