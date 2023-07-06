@@ -3,7 +3,6 @@ The Lord of The Words : The Two Frameworks
 
 [![GitHub license](https://img.shields.io/github/license/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema/The-Lord-of-The-Words-The-two-frameworks/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/issues)
-[![GitHub stars](https://img.shields.io/github/stars/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/SoyGema/Startcraft_pysc2_minigames.svg)](https://github.com/SoyGema//The-Lord-of-The-Words-The-two-frameworks/network)
 
 
