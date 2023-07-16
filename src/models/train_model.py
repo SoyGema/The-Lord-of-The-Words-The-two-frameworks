@@ -340,6 +340,7 @@ def main():
             use_auth_token=True if model_args.use_auth_token else None,
         )
         
+        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 4 == 0, with_indices=True)
     else:
         data_files = {}
         if data_args.train_file is not None:
