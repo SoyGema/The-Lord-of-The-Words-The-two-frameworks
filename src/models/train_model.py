@@ -34,6 +34,8 @@ from datasets import load_dataset
 
 import transformers
 
+
+
 ### Load autoclasses from HugginFace
 
 from transformers import (
@@ -117,6 +119,7 @@ class DataTrainingArguments:
     Arguments pertaining to what data we are going to input our model for training and eval.
     """
     ### source_lang and target_lang should use the sylabe ( eg en )
+    
     source_lang: str = field(default=None, metadata={"help": "Source language id for translation."})
     target_lang: str = field(default=None, metadata={"help": "Target language id for translation."})
     dataset_name: Optional[str] = field(
@@ -145,14 +148,14 @@ class DataTrainingArguments:
         },
     )
     overwrite_cache: bool = field(
-        default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
+        default=True, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
     preprocessing_num_workers: Optional[int] = field(
         default=None,
         metadata={"help": "The number of processes to use for the preprocessing."},
     )
     max_source_length: Optional[int] = field(
-        default=1024,
+        default=None,
         metadata={
             "help": (
                 "The maximum total input sequence length after tokenization. Sequences longer "
@@ -161,7 +164,7 @@ class DataTrainingArguments:
         },
     )
     max_target_length: Optional[int] = field(
-        default=64,
+        default=None,
         metadata={
             "help": (
                 "The maximum total sequence length for target text after tokenization. Sequences longer "
@@ -181,7 +184,7 @@ class DataTrainingArguments:
         },
     )
     pad_to_max_length: bool = field(
-        default=False,
+        default=True,
         metadata={
             "help": (
                 "Whether to pad all samples to model maximum sentence length. "
@@ -328,6 +331,7 @@ def main():
     # In distributed training, the load_dataset function guarantee that only one local process can concurrently
     # download the dataset.
     if data_args.dataset_name is not None:
+
         # Downloading and loading a dataset from the hub.
         raw_datasets = load_dataset(
             data_args.dataset_name,
@@ -335,6 +339,7 @@ def main():
             cache_dir=model_args.cache_dir,
             use_auth_token=True if model_args.use_auth_token else None,
         )
+        
     else:
         data_files = {}
         if data_args.train_file is not None:
@@ -434,6 +439,8 @@ def main():
         if "train" not in raw_datasets:
             raise ValueError("--do_train requires a train dataset")
         train_dataset = raw_datasets["train"]
+        train_dataset = raw_datasets["train"].train_test_split(test_size=0.15)
+        train_dataset = train_dataset["train"]
         if data_args.max_train_samples is not None:
             max_train_samples = min(len(train_dataset), data_args.max_train_samples)
             train_dataset = train_dataset.select(range(max_train_samples))
@@ -538,11 +545,15 @@ def main():
         # https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.TFPreTrainedModel.prepare_tf_dataset
         # https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.to_tf_dataset
 
+
+        # Prepare different batches of the dataset
+
+
         tf_train_dataset = model.prepare_tf_dataset(
             train_dataset,
             collate_fn=data_collator,
             batch_size=total_train_batch_size,
-            shuffle=True,
+            shuffle=False,
         ).with_options(dataset_options)
         tf_eval_dataset = model.prepare_tf_dataset(
             eval_dataset, collate_fn=data_collator, batch_size=total_eval_batch_size, shuffle=False
