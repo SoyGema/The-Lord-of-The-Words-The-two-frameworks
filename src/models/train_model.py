@@ -173,7 +173,7 @@ class DataTrainingArguments:
         },
     )
     val_max_target_length: Optional[int] = field(
-        default=None,
+        default=64,
         metadata={
             "help": (
                 "The maximum total sequence length for validation target text after tokenization. Sequences longer "
@@ -340,7 +340,7 @@ def main():
             use_auth_token=True if model_args.use_auth_token else None,
         )
         
-        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 4 == 0, with_indices=True)
+        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
     else:
         data_files = {}
         if data_args.train_file is not None:
@@ -624,7 +624,7 @@ def main():
                 metric_fn=compute_metrics,
                 eval_dataset=tf_eval_dataset,
                 predict_with_generate=True,
-                use_xla_generation=True,
+                use_xla_generation=False,
                 generate_kwargs=gen_kwargs,
             )
             callbacks = [metric_callback]
