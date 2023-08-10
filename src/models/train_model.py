@@ -705,7 +705,7 @@ def main():
             # https://huggingface.co/blog/tf-xla-generate
             
 
-            ## This is weird , the article talks about generation and this is translations
+            ## This is weird , the article talks about generation and this is translation
             @tf.function(jit_compile=True)
             def generate(**kwargs):
                 return model.generate(**kwargs)
