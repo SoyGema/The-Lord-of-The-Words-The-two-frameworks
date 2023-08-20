@@ -29,8 +29,11 @@ python train_model.py \
     --dataset_name opus100 \
     --dataset_config_name en-ro \
     --output_dir /tmp/tst-translation \
-    --per_device_train_batch_size=16 \
-    --per_device_eval_batch_size=16 \
+    --per_device_train_batch_size=64 \
+    --per_device_eval_batch_size=64 \
+    --num_train_epochs 1 \
+    --learning_rate 0.1 \
+    --config_name t5-small \
     --overwrite_output_dir
 ```
 
