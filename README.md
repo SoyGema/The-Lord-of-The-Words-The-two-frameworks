@@ -70,6 +70,13 @@ Why Transformers for Neural Machine Translation?
 
 Transformer has been widely adopted in Neural Machine Translation (NMT) because of its large capacity and parallel training of sequence generation. However, the deployment of Transformers is challenging because different scenarios require models of different complexities and scales.
 
+
+
+https://github.com/SoyGema/The-Lord-of-The-Words-The-two-frameworks/assets/24204714/081d4f70-48e0-4462-8e11-8373644aee21
+
+
+
+
 Project Organization
 ------------
 
