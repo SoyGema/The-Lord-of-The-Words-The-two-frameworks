@@ -1,0 +1,56 @@
+{
+    "os": "macOS-13.4.1-arm64-arm-64bit",
+    "python": "3.10.10",
+    "heartbeatAt": "2023-08-24T17:52:29.459384",
+    "startedAt": "2023-08-24T17:52:28.705386",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--model_name_or_path",
+        "t5-small",
+        "--do_train",
+        "--do_eval",
+        "--source_lang",
+        "en",
+        "--target_lang",
+        "ro",
+        "--source_prefix",
+        "translate English to Romanian: ",
+        "--dataset_name",
+        "opus100",
+        "--dataset_config_name",
+        "en-ro",
+        "--output_dir",
+        "/tmp/tst-translation",
+        "--per_device_train_batch_size=4",
+        "--per_device_eval_batch_size=4",
+        "--overwrite_output_dir",
+        "--predict_with_generate",
+        "--push_to_hub"
+    ],
+    "state": "running",
+    "program": "/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/src/models/Pytorch/run_translation.py",
+    "codePath": "src/models/Pytorch/run_translation.py",
+    "git": {
+        "remote": "https://github.com/SoyGema/The-Lord-of-The-Words-The-two-frameworks",
+        "commit": "81eb8a893b7d56b7210e039b14f848604f1c2bc4"
+    },
+    "email": "gema.parreno.piqueras@gmail.com",
+    "root": "/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks",
+    "host": "mbp-de-gema-2.lan",
+    "username": "gema",
+    "executable": "/Users/gema/Documents/The-Lord-of-The-Words-The-two-frameworks/.torchenv/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 10,
+    "disk": {
+        "total": 926.3517189025879,
+        "used": 8.439285278320312
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 64.0
+    }
+}
