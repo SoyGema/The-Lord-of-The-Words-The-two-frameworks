@@ -10,8 +10,10 @@ The Lord of The Words : The Two Frameworks
 
 Working under Python 3.9
 
-Reproduce training with Pytorch
+Reproduce training with Pytorch 
 ------------
+
+The flag --report_to all corresponds to experiment logging with W&B
 
 ```
 python run_translation.py \
@@ -21,13 +23,14 @@ python run_translation.py \
     --source_lang en \
     --target_lang ro \
     --source_prefix "translate English to Romanian: " \
-    --dataset_name wmt16 \
-    --dataset_config_name ro-en \
+    --dataset_name opus100 \
+    --dataset_config_name en-ro \
     --output_dir /tmp/tst-translation \
     --per_device_train_batch_size=4 \
     --per_device_eval_batch_size=4 \
     --overwrite_output_dir \
     --predict_with_generate
+    --report_to all
 ```
 
 
@@ -55,7 +58,8 @@ python train_model_TF.py \
     --num_train_epochs 1 \
     --learning_rate 0.1 \
     --config_name t5-small \
-    --overwrite_output_dir
+    --overwrite_output_dir \
+
 ```
 
 
@@ -74,7 +78,12 @@ Transformer has been widely adopted in Neural Machine Translation (NMT) because 
 
 https://github.com/SoyGema/The-Lord-of-The-Words-The-two-frameworks/assets/24204714/081d4f70-48e0-4462-8e11-8373644aee21
 
+Hypothesis for Experiments
+------------
 
+Build a english-to-many Demo to prove multilingual capabilities of T5 model.
+As languages avalilable for the dataset, we can find more than 70 languages available. From that , we can select some minoritary languages to make the demos. 
+'en-eo', 'en-es', 'en-et', 'en-eu', 'en-fa', 'en-fi', 'en-fr', 'en-fy', 'en-ga', 'en-gd', 'en-gl', 'en-gu', 'en-ha', 'en-he', 'en-hi', 'en-hr', 'en-hu', 'en-hy', 'en-id', 'en-ig', 'en-is', 'en-it', 'en-ja', 'en-ka', 'en-kk', 'en-km', 'en-ko', 'en-kn', 'en-ku', 'en-ky', 'en-li', 'en-lt', 'en-lv', 'en-mg', 'en-mk', 'en-ml', 'en-mn', 'en-mr', 'en-ms', 'en-mt', 'en-my', 'en-nb', 'en-ne', 'en-nl', 'en-nn', 'en-no', 'en-oc', 'en-or', 'en-pa', 'en-pl', 'en-ps', 'en-pt', 'en-ro', 'en-ru', 'en-rw', 'en-se', 'en-sh', 'en-si', 'en-sk', 'en-sl', 'en-sq', 'en-sr', 'en-sv', 'en-ta', 'en-te', 'en-tg', 'en-th', 'en-tk', 'en-tr', 'en-tt', 'en-ug', 'en-uk', 'en-ur', 'en-uz', 'en-vi', 'en-wa', 'en-xh', 'en-yi', 'en-yo', 'en-zh', 'en-zu'
 
 
 Project Organization
