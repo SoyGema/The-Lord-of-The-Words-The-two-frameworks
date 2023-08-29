@@ -25,6 +25,9 @@ import warnings
 from dataclasses import dataclass, field
 from typing import Optional
 
+# Machine Learning experiment tracking
+import wandb
+
 import datasets
 import evaluate
 import numpy as np
@@ -322,7 +325,7 @@ def main():
     ]:
         logger.warning(
             "You're running a t5 model but didn't provide a source prefix, which is expected, e.g. with "
-            "`--source_prefix 'translate English to German: ' `"
+            "`--source_prefix 'translate English to Spanish: ' `"
         )
 
     # Detecting last checkpoint.
@@ -360,7 +363,7 @@ def main():
             cache_dir=model_args.cache_dir,
             token=model_args.token,
         )
-        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
+        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 128 == 0, with_indices=True)
     else:
         data_files = {}
         if data_args.train_file is not None:
@@ -378,7 +381,7 @@ def main():
             cache_dir=model_args.cache_dir,
             token=model_args.token,
         )
-        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
+        #raw_datasets = raw_datasets.filter(lambda example , idx: idx % 64 == 0, with_indices=True)
 
     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at
     # https://huggingface.co/docs/datasets/loading_datasets.html.
