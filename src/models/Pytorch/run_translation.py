@@ -363,7 +363,7 @@ def main():
             cache_dir=model_args.cache_dir,
             token=model_args.token,
         )
-        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 128 == 0, with_indices=True)
+        #raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
     else:
         data_files = {}
         if data_args.train_file is not None:
