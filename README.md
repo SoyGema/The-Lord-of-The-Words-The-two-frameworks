@@ -21,10 +21,10 @@ python run_translation.py \
     --do_train \
     --do_eval \
     --source_lang en \
-    --target_lang es \
-    --source_prefix "translate English to Spanish: " \
+    --target_lang he \
+    --source_prefix "translate English to Hebrew: " \
     --dataset_name opus100 \
-    --dataset_config_name en-es \
+    --dataset_config_name en-he \
     --output_dir /tmp/tst-translation \
     --per_device_train_batch_size=4 \
     --per_device_eval_batch_size=4 \
