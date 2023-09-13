@@ -21,18 +21,19 @@ python run_translation.py \
     --do_train \
     --do_eval \
     --source_lang en \
-    --target_lang he \
-    --source_prefix "translate English to Hebrew: " \
+    --target_lang hi \
+    --source_prefix "translate English to Hindi: " \
     --dataset_name opus100 \
-    --dataset_config_name en-he \
-    --output_dir /tmp/tst-translation \
+    --dataset_config_name en-hi \
+    --output_dir=/tmp/english-hindi \
     --per_device_train_batch_size=4 \
     --per_device_eval_batch_size=4 \
     --overwrite_output_dir \
     --num_train_epochs=3 \
     --push_to_hub=True \
-    --predict_with_generate
-    --report_to all
+    --predict_with_generate=True
+    --report_to_all
+    --do_predict
 ```
 
 

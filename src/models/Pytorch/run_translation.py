@@ -363,7 +363,7 @@ def main():
             cache_dir=model_args.cache_dir,
             token=model_args.token,
         )
-        #raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
+        raw_datasets = raw_datasets.filter(lambda example , idx: idx % 64 == 0, with_indices=True)
     else:
         data_files = {}
         if data_args.train_file is not None:
@@ -381,7 +381,7 @@ def main():
             cache_dir=model_args.cache_dir,
             token=model_args.token,
         )
-        #raw_datasets = raw_datasets.filter(lambda example , idx: idx % 64 == 0, with_indices=True)
+        #raw_datasets = raw_datasets.filter(lambda example , idx: idx % 512 == 0, with_indices=True)
 
     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at
     # https://huggingface.co/docs/datasets/loading_datasets.html.
@@ -447,7 +447,7 @@ def main():
         return
 
     # For translation we set the codes of our source and target languages (only useful for mBART, the others will
-    # ignore those attributes).
+    # ignore those attributes). He de bajarme el mBART?
     if isinstance(tokenizer, tuple(MULTILINGUAL_TOKENIZERS)):
         assert data_args.target_lang is not None and data_args.source_lang is not None, (
             f"{tokenizer.__class__.__name__} is a multilingual tokenizer which requires --source_lang and "
