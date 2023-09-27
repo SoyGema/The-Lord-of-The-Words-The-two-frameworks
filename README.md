@@ -14,6 +14,7 @@ Reproduce training with Pytorch
 ------------
 
 The flag --report_to all corresponds to experiment logging with W&B
+Under /The-Lord-of-The-Words-The-two-frameworks/src/models/Pytorch
 
 ```
 python run_translation.py \
