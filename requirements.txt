@@ -5,8 +5,5 @@ protobuf
 sacrebleu >= 1.4.12
 py7zr
 torch >= 1.3
-<<<<<<< HEAD
 evaluate
-=======
-evaluate
->>>>>>> c4dbd5d38d6b809ffb55605ae223ab8e069b32e4
+transformers
