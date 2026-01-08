@@ -28,7 +28,7 @@ distlib==0.3.6
 entrypoints @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_croot-jb01gaox/entrypoints_1650293758411/work
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
 fastjsonschema @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_43a0jaiddu/croots/recipe/python-fastjsonschema_1661368628129/work
-filelock==3.12.0
+filelock==3.20.1
 flatbuffers==23.5.26
 gast==0.4.0
 google-auth==2.19.0
