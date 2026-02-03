@@ -33,7 +33,7 @@ numpy==1.25.2
 packaging==23.1
 pandas==2.0.3
 pathtools==0.1.2
-pip==25.3
+pip==26.0
 portalocker==2.7.0
 protobuf==4.25.8
 psutil==5.9.5
