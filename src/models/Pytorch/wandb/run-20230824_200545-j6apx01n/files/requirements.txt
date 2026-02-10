@@ -35,7 +35,7 @@ pandas==2.0.3
 pathtools==0.1.2
 pip==26.0
 portalocker==2.7.0
-protobuf==4.25.8
+protobuf==5.29.6
 psutil==5.9.5
 py7zr==0.20.6
 pyarrow==14.0.1
