@@ -19,7 +19,7 @@ fsspec==2023.6.0
 gitdb==4.0.10
 gitpython==3.1.50
 huggingface-hub==0.16.4
-idna==3.7
+idna==3.15
 inflate64==0.3.1
 jinja2==3.1.6
 lxml==6.1.0
